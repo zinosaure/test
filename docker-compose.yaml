@@ -1,9 +1,9 @@
-name: fleetco
+name: fleet
 
 services:
     backend:
-        image: fleetco/backend
-        container_name: fleetco-backend
+        image: fleet/backend
+        container_name: fleet-backend
         build:
             context: ./src/backend
         ports:
@@ -17,15 +17,15 @@ services:
             - /app/node_modules
             - ./src/backend/code:/app/code
 
-    webapp:
+    babel:
         depends_on:
             - "backend"
-        image: fleetco/webapp
-        container_name: fleetco-webapp
+        image: fleet/babel
+        container_name: fleet-babel
         build:
-            context: ./src/webapp
+            context: ./src/babel
         ports:
-            - "9002:3000"
+            - "9000:80"
         tty: true
         stdin_open: true
         environment:
@@ -33,6 +33,24 @@ services:
             - PASSWORD=???
         volumes:
             - /app/node_modules
-            - ./src/webapp/code:/app/src
-            - ./src/webapp/public:/app/public
+            - ./src/babel/code:/app/code
+
+    # webapp:
+    #     depends_on:
+    #         - "backend"
+    #     image: fleet/webapp
+    #     container_name: fleet-webapp
+    #     build:
+    #         context: ./src/webapp
+    #     ports:
+    #         - "9002:3000"
+    #     tty: true
+    #     stdin_open: true
+    #     environment:
+    #         - USERNAME=???
+    #         - PASSWORD=???
+    #     volumes:
+    #         - /app/node_modules
+    #         - ./src/webapp/code:/app/src
+    #         - ./src/webapp/public:/app/public
         

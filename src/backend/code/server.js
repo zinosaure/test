@@ -25,18 +25,55 @@ app.get('/api/init', function (request, response, next) {
     }
 });
 
-app.get('/api/employees', function (request, response, next) {
+app.get('/api/list/employees', function (request, response, next) {
     try {
-        response.json(q.get_employees(request.query));
+        response.json(q.list_employees(request.query));
     } catch (e) {
         console.error(e.message);
         next(e);
     }
 });
 
-app.get('/api/devices', function (request, response, next) {
+app.get('/api/list/devices', function (request, response, next) {
     try {
-        response.json(q.get_devices(request.query));
+        response.json(q.list_devices(request.query));
+    } catch (e) {
+        console.error(e.message);
+        next(e);
+    }
+});
+
+app.post('/api/upsert/employee', function (request, response, next) {
+    try {
+        response.json(q.upsert_employee(request.body));
+    } catch (e) {
+        console.error(e.message);
+        next(e);
+    }
+});
+
+app.post('/api/upsert/device', function (request, response, next) {
+    try {
+        response.json(q.upsert_device(request.body));
+    } catch (e) {
+        console.error(e.message);
+        next(e);
+    }
+});
+
+app.delete('/api/delete/employee', function (request, response, next) {
+    try {
+        response.json(q.delete_employee(request.body.id));
+    } catch (e) {
+        console.error(e.message);
+        next(e);
+    }
+});
+
+
+app.delete('/api/delete/device', function (request, response, next) {
+    try {
+        response.json(q.delete_device(request.body.id));
     } catch (e) {
         console.error(e.message);
         next(e);

@@ -6,10 +6,11 @@ RUN apt-get update && apt-get upgrade -y
 RUN npm cache clean --force
 RUN npm install npm -g
 RUN npm install nodemon -g
-RUN npm init react-app .
-RUN npm install react-bootstrap bootstrap
+RUN npm install express
+RUN npm install express cors
 
-COPY ./code /app/src
+COPY ./code /app/code
+WORKDIR /app/code
 
-EXPOSE 3000
-CMD [ "nodemon", "react-scripts", "start" ]
+EXPOSE 80
+CMD [ "nodemon", "server.js" ]

@@ -47,29 +47,34 @@ function init() {
 
         const data = JSON.parse(content);
 
-        for (var i in data.employees) {
-            database.prepare(`INSERT 
-                INTO 
-                    employees(id, employee_name, employee_role, employee_photo) 
-                VALUES 
-                    (?, ?, ?, ?)
-                ON CONFLICT DO NOTHING;
-            `).run(Object.values(data.employees[i]));
-        }
+        var stmt = database.prepare(`INSERT 
+            INTO 
+                employees(id, employee_name, employee_role, employee_photo) 
+            VALUES 
+                (@id, @employee_name, @employee_role, @employee_photo)
+            ON CONFLICT DO NOTHING;
+        `);
 
-        for (var i in data.devices) {
-            database.prepare(`INSERT 
-                INTO 
-                    devices(id, employee_id, device_name, device_type) 
-                VALUES 
-                    (?, ?, ?, ?)
-                ON CONFLICT DO NOTHING;
-            `).run(Object.values(data.devices[i]));
-        }
+        for (var i in data.employees)
+            stmt.run(data.employees[i]);
+
+        var stmt = database.prepare(`INSERT 
+            INTO 
+                devices(id, employee_id, device_name, device_type) 
+            VALUES 
+                (@id, @employee_id, @device_name, @device_type)
+            ON CONFLICT DO NOTHING;
+        `);
+
+        for (var i in data.devices)
+            stmt.run(data.devices[i]);
     });
 }
 
-function get_employees(params = { page: 1 }) {
+function list_employees(params) {
+    if (!params.length)
+        params = { page: 1 };
+
     const offset = (params.page - 1) * config.item_per_page;
     const tdata = query(`SELECT 
             *,
@@ -93,7 +98,20 @@ function get_employees(params = { page: 1 }) {
     return { employees, meta };
 }
 
-function get_devices(params = { page: 1 }) {
+function get_devices_by_employee(employee_id) {
+    return query(`SELECT 
+            * 
+        FROM 
+            devices
+        WHERE 
+            employee_id = @employee_id;
+    `, { employee_id: employee_id });
+}
+
+function list_devices(params) {
+    if (!params.length)
+        params = { page: 1 };
+
     const offset = (params.page - 1) * config.item_per_page;
     const data = query(`SELECT 
             *,
@@ -114,21 +132,39 @@ function get_devices(params = { page: 1 }) {
     return { data, meta };
 }
 
-function get_devices_by_employee(employee_id) {
-    return query(`SELECT 
-            * 
-        FROM 
-            devices
-        WHERE 
-            employee_id = ?;
-    `, [employee_id]);
+function upsert_employee(payload) {
+
 }
 
+function upsert_device(employee_id, payload) {
+}
+
+function delete_employee(id) {
+    return database.prepare(`DELETE
+        FROM 
+            employees
+        WHERE
+            id = @id;
+    `).run({ id: id });
+}
+
+function delete_device(id) {
+    return database.prepare(`DELETE
+        FROM 
+            devices
+        WHERE
+            id = @id;
+    `).run({ id: id });
+}
 
 module.exports = {
     roles,
     device_types,
     init,
-    get_employees,
-    get_devices
+    list_employees,
+    list_devices,
+    upsert_employee,
+    upsert_device,
+    delete_employee,
+    delete_device,
 }
