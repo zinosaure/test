@@ -8,7 +8,7 @@ function Popup() {
                     paddingTop: 16,
                 });
                 $this.content_child = $('<div class="card-body"></div>').append($this.spin);
-                $this.content = $('<div class="card"></div>').css({
+                $this.content = $('<div id="xxxxxx" class="card"></div>').css({
                     width: 100,
                     height: 100,
                     minWidth: 50,

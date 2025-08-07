@@ -61,7 +61,7 @@ app.post('/api/upsert/device', function (request, response, next) {
     }
 });
 
-app.delete('/api/delete/employee', function (request, response, next) {
+app.post('/api/delete/employee', function (request, response, next) {
     try {
         response.json(q.delete_employee(request.body.id));
     } catch (e) {

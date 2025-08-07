@@ -19,12 +19,7 @@ app.get("/", function (request, response) {
     response.header('Expires', '-1');
     response.header('Pragma', 'no-cache');
     response.header('Content-Type', 'text/html');
-    return response.sendFile(path.join(__dirname, '/public/html/index.html'));
-});
-
-app.get("/api", function (request, response) {4
-    response.header('Content-Type', 'text/html');
-    response.send("<MenuItem title={'>Hello World'}></MenuItem>");
+    return response.sendFile(path.join(__dirname, '/html/index.html'));
 });
 
 app.listen(PORT, function () {

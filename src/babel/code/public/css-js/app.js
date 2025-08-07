@@ -1,5 +1,8 @@
 const bs = ReactBootstrap;
 
+
+
+
 function App(content) {
     const items = [
         { title: "item-1" },
@@ -54,8 +57,6 @@ function App(content) {
     );
 }
 
-
-
 function Sidebar(props) {
     const { items } = props
 
@@ -85,12 +86,13 @@ function MenuItem(props) {
 
 function Input(props) {
     const { value, handleOnChange } = props;
+
     return (
         <input value={value} onChange={(e) => handleOnChange(e.target.value)} />
     );
 }
 
-function Table({ labels, endpoint, callback }) {
+function Table({ labels, endpoint, callback, delete_callback }) {
     const [items, setItems] = React.useState([]);
 
     React.useEffect(() => {
@@ -121,7 +123,7 @@ function Table({ labels, endpoint, callback }) {
             <tbody key="tbody">
                 {items.map((item, i) => {
                     return (
-                        <tr key={i}>
+                        <tr key={i} data-item={JSON.stringify(item)}>
                             {Object.values(labels).map((callback, j) => {
                                 return (<td key={j} dangerouslySetInnerHTML={{ __html: handle_callback(callback, item) }} />);
                             })}
@@ -233,36 +235,21 @@ class Form extends React.Component {
         </form>;
     }
 }
-function t() {
-    const [html, setHTML] = React.useState({ __html: "" });
 
-    React.useEffect(() => {
-        (async () => {
-            return { __html: await (await fetch("/api")).text() };
-        })().then(html => setHTML(html))
-    }, []);
 
-    return html;
-}
-
-function Signin() {
+function Signin({ item }) {
     return (
-        <div className="container">
-            <form className="form-signin">
-                <h2 className="form-signin-heading"> Please sign in </h2>
-                <br />
-                <label htmlFor="inputEmail" className="sr-only"> Email address
-                </label>
-                <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required autoFocus />
-                <br />
-                <label htmlFor="inputPassword" className="sr-only"> Password</label>
-                <input type="password" id="inputPassword" className="form-control" placeholder="Password" required />
-                <br />
-                <button className="btn btn-lg btn-primary btn-block" type="button"> Sign in
-                </button>
-            </form>
-        </div>
-    )
+        <bs.Form>
+            <bs.Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <bs.Form.Label>Email address</bs.Form.Label>
+                <bs.Form.Control type="email" placeholder="name@example.com" />
+            </bs.Form.Group>
+            <bs.Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                <bs.Form.Label>Example textarea</bs.Form.Label>
+                <bs.Form.Control as="textarea" rows={3} value={item.name.first} />
+            </bs.Form.Group>
+        </bs.Form>
+    );
 }
 
 function Edit() {
@@ -270,27 +257,94 @@ function Edit() {
 }
 
 function Delete() {
-    return (<></>);
+    return (<div>
+        <h4>Do you want to delete this line ?</h4>
+        <hr />
+        <bs.Row>
+            <bs.Col></bs.Col>
+            <bs.Col></bs.Col>
+            <bs.Col>
+                <bs.Button
+                    id="cancel-delete"
+                    type="button"
+                    variant="outline-secondary"
+                    className="w-100"
+                >No</bs.Button>
+            </bs.Col>
+            <bs.Col>
+                <bs.Button
+                    id="confirm-delete"
+                    type="button"
+                    variant="warning"
+                    className="w-100"
+                >Yes</bs.Button>
+            </bs.Col>
+        </bs.Row>
+    </div>);
 }
 
-function a() {
+
+function renderToString(component) {
     const div = document.createElement("div");
-    const root = ReactDOM.createRoot(div);
-    ReactDOM.flushSync(() => root.render(<Signin />));
 
-    return popup.open(div.innerHTML);
+    ReactDOM.flushSync(() => {
+        ReactDOM.createRoot(div).render(component);
+    });
+
+    return $(div.innerHTML);
 }
+
+
+function edit_line(button) {
+    return popup.open(renderToString(<Signin item={$(button).closest("tr").data("item") || {}} />), 400, true);
+}
+
+
+function delete_line(button) {
+    const item = $(button).closest("tr").data("item") || {};
+    const $html = renderToString(<Delete />);
+
+    $html.find("#cancel-delete").on("click", () => popup.close());
+    $html.find("#confirm-delete").on("click", () => {
+        fetch('http://localhost:3000/api/delete/employee', {
+            method: "POST",
+            body: JSON.stringify({ id: item.id }),
+            headers: {
+                "Content-Type": "application/json",
+                // 'Authorization': 'Bearer my-token',
+            },
+        }).then(async response => {
+            const is_json = response.headers.get('content-type')?.includes('application/json');
+            const data = is_json && await response.json();
+
+            if (!response.ok)
+                return Promise.reject((data && data.message) || response.status);
+
+            $(button).closest("tr").remove();
+
+            return popup.close();
+        }).catch(error => {
+            console.error('There was an error!', error);
+        });
+    });
+
+    popup.open($html, 500, true);
+}
+
+
 
 
 ReactDOM.createRoot(document.querySelector('#app')).render(App(
     <Table
         labels={{
-            "Fullname": (item) => `${item.name.last} ${item.name.first}`,
-            "Email": "email",
-            '<i class="fa-solid fa-pencil"></i>': (item) => `<a onClick="a()"><i class="fa-solid fa-pencil"></i></a>`,
-            '<i class="fa-solid fa-trash"></i>': (item) => `<a onClick=""><i class="fa-solid fa-trash"></i></a>`,
+            '<i class="fa-solid fa-pencil"></i>':
+                () => `<a onClick="edit_line(this)"><i class="fa-solid fa-pencil"></i></a>`,
+            "Fullname": "employee_name",
+            "Role": "employee_role",
+            '<i class="fa-solid fa-trash"></i>':
+                () => `<a onclick="delete_line(this)"><i class="fa-solid fa-trash"></i></a>`,
         }}
-        endpoint={"https://randomuser.me/api/?results=20"}
-        callback={(data) => data.results}
+        endpoint={"http://localhost:3000/api/list/employees"}
+        callback={(data) => data.employees}
     />
 ));

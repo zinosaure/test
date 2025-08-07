@@ -4,7 +4,7 @@ const path = require('path');
 const sqlite = require('better-sqlite3');
 const fs = require('node:fs');
 // const database = new sqlite(path.resolve('./static/database.db'), { verbose: console.info });
-const database = new sqlite(path.resolve('./static/database.db'));
+const database = new sqlite(path.resolve('./static/database.db'), { readonly: false });
 
 const config = {
     item_per_page: process.env.ITEM_PER_PAGE || 10,
