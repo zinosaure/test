@@ -22,6 +22,11 @@ app.get("/", function (request, response) {
     return response.sendFile(path.join(__dirname, '/public/html/index.html'));
 });
 
+app.get("/api", function (request, response) {4
+    response.header('Content-Type', 'text/html');
+    response.send("<MenuItem title={'>Hello World'}></MenuItem>");
+});
+
 app.listen(PORT, function () {
     console.log(`Listening on port ${PORT}`);
 });

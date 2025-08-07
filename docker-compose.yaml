@@ -25,7 +25,7 @@ services:
         build:
             context: ./src/babel
         ports:
-            - "9000:80"
+            - "8081:80"
         tty: true
         stdin_open: true
         environment:
