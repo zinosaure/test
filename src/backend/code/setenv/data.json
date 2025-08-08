@@ -3,110 +3,92 @@
         {
             "id": 1,
             "employee_name": "Otto Lehtinen",
-            "employee_role": 1,
-            "employee_photo": "https://randomuser.me/api/portraits/men/30.jpg"
+            "employee_role": "admin"
         },
         {
             "id": 2,
             "employee_name": "Veera Wainio",
-            "employee_role": 2,
-            "employee_photo": "https://randomuser.me/api/portraits/women/4.jpg"
+            "employee_role": "chief executor officer"
         },
         {
             "id": 3,
             "employee_name": "Rosalyn Morris",
-            "employee_role": 3,
-            "employee_photo": "https://randomuser.me/api/portraits/women/43.jpg"
+            "employee_role": "chief technical officer"
         },
         {
             "id": 4,
             "employee_name": "Marco Campos",
-            "employee_role": 4,
-            "employee_photo": "https://randomuser.me/api/portraits/men/70.jpg"
+            "employee_role": "chief content officer"
         },
         {
             "id": 5,
             "employee_name": "Noemí Saldivar",
-            "employee_role": 11,
-            "employee_photo": "https://randomuser.me/api/portraits/women/89.jpg"
+            "employee_role": "product manager"
         },
         {
             "id": 6,
             "employee_name": "Guillaume Clement",
-            "employee_role": 12,
-            "employee_photo": "https://randomuser.me/api/portraits/men/61.jpg"
+            "employee_role": "lead developer"
         },
         {
             "id": 7,
             "employee_name": "Dalia Holguín",
-            "employee_role": 13,
-            "employee_photo": "https://randomuser.me/api/portraits/women/69.jpg"
+            "employee_role": "devops"
         },
         {
             "id": 8,
             "employee_name": "Natalie Zhang",
-            "employee_role": 13,
-            "employee_photo": "https://randomuser.me/api/portraits/women/59.jpg"
+            "employee_role": "devops"
         },
         {
             "id": 9,
-            "employee_name": "Nalan Keçeci",
-            "employee_role": 14,
-            "employee_photo": "https://randomuser.me/api/portraits/women/57.jpg"
+            "employee_name": "Royan Keçeci",
+            "employee_role": "developer"
         },
         {
             "id": 10,
             "employee_name": "Marko Žikić",
-            "employee_role": 14,
-            "employee_photo": "https://randomuser.me/api/portraits/men/11.jpg"
+            "employee_role": "developer"
         },
         {
             "id": 11,
             "employee_name": "Nalan Keçeci",
-            "employee_role": 14,
-            "employee_photo": "https://randomuser.me/api/portraits/women/57.jpg"
+            "employee_role": "developer"
         },
         {
             "id": 12,
             "employee_name": "Konsta Couri",
-            "employee_role": 14,
-            "employee_photo": "https://randomuser.me/api/portraits/men/55.jpg"
+            "employee_role": "developer"
         },
         {
             "id": 13,
             "employee_name": "Ayat Sødal",
-            "employee_role": 14,
-            "employee_photo": "https://randomuser.me/api/portraits/women/13.jpg"
+            "employee_role": "developer"
         },
         {
             "id": 14,
             "employee_name": "Oscar Roussel",
-            "employee_role": 15,
-            "employee_photo": "https://randomuser.me/api/portraits/men/81.jpg"
+            "employee_role": "tester"
         },
         {
             "id": 15,
             "employee_name": "Calvin Garza",
-            "employee_role": 15,
-            "employee_photo": "https://randomuser.me/api/portraits/men/16.jpg"
+            "employee_role": "tester"
         },
         {
             "id": 16,
             "employee_name": "Pistina Domontovich",
-            "employee_role": 16,
-            "employee_photo": "https://randomuser.me/api/portraits/women/82.jpg"
+            "employee_role": "trainee"
         },
         {
             "id": 17,
             "employee_name": "Xavier Calvo",
-            "employee_role": 21,
-            "employee_photo": "https://randomuser.me/api/portraits/men/9.jpg"
+            "employee_role": "it support"
         },
         {
             "id": 18,
             "employee_name": "Ava Boyd",
-            "employee_role": 21,
-            "employee_photo": "https://randomuser.me/api/portraits/women/52.jpg"
+            "employee_role": "it support"
         }
     ],
     "devices": [
@@ -114,430 +96,421 @@
             "id": 1,
             "employee_id": 1,
             "device_name": "Dell 17",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 2,
             "employee_id": 1,
             "device_name": "Samsung OLED 44",
-            "device_type": 2
+            "device_type": "flat screen"
         },
         {
             "id": 3,
             "employee_id": 1,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 4,
             "employee_id": 1,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
         {
             "id": 5,
             "employee_id": 1,
             "device_name": "Support bag 17",
-            "device_type": 5
+            "device_type": "support bag"
         },
         {
             "id": 6,
             "employee_id": 1,
             "device_name": "Samsung Galaxy 22",
-            "device_type": 6
+            "device_type": "smartphone"
         },
         {
             "id": 7,
             "employee_id": 1,
             "device_name": "+33 0601453636",
-            "device_type": 7
+            "device_type": "SIM card"
         },
-
         {
             "id": 8,
             "employee_id": 2,
             "device_name": "Dell 17",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 9,
             "employee_id": 2,
             "device_name": "Samsung OLED 44",
-            "device_type": 2
+            "device_type": "flat screen"
         },
         {
             "id": 10,
             "employee_id": 2,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 11,
             "employee_id": 2,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
         {
             "id": 12,
             "employee_id": 2,
             "device_name": "Support bag 17",
-            "device_type": 5
+            "device_type": "support bag"
         },
         {
             "id": 13,
             "employee_id": 2,
             "device_name": "Samsung Galaxy 22",
-            "device_type": 6
+            "device_type": "smartphone"
         },
         {
             "id": 14,
             "employee_id": 2,
             "device_name": "+33 0601453640",
-            "device_type": 7
+            "device_type": "SIM card"
         },
-
         {
             "id": 15,
             "employee_id": 3,
             "device_name": "Dell 17",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 16,
             "employee_id": 3,
             "device_name": "Samsung OLED 44",
-            "device_type": 2
+            "device_type": "flat screen"
         },
         {
             "id": 17,
             "employee_id": 3,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 18,
             "employee_id": 3,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
         {
             "id": 19,
             "employee_id": 3,
             "device_name": "Support bag 17",
-            "device_type": 5
+            "device_type": "support bag"
         },
         {
             "id": 20,
             "employee_id": 3,
             "device_name": "Samsung Galaxy 22",
-            "device_type": 6
+            "device_type": "smartphone"
         },
         {
             "id": 21,
             "employee_id": 3,
             "device_name": "+33 0601453642",
-            "device_type": 7
+            "device_type": "SIM card"
         },
-
         {
             "id": 22,
             "employee_id": 4,
             "device_name": "Dell 17",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 23,
             "employee_id": 4,
             "device_name": "Samsung OLED 44",
-            "device_type": 2
+            "device_type": "flat screen"
         },
         {
             "id": 24,
             "employee_id": 4,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 25,
             "employee_id": 4,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
         {
             "id": 26,
             "employee_id": 4,
             "device_name": "Support bag 17",
-            "device_type": 5
+            "device_type": "support bag"
         },
         {
             "id": 27,
             "employee_id": 4,
             "device_name": "Samsung Galaxy 22",
-            "device_type": 6
+            "device_type": "smartphone"
         },
         {
             "id": 28,
             "employee_id": 4,
             "device_name": "+33 0601453644",
-            "device_type": 7
+            "device_type": "SIM card"
         },
-
         {
             "id": 29,
             "employee_id": 5,
             "device_name": "Dell 15",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 30,
             "employee_id": 5,
             "device_name": "Samsung OLED 32",
-            "device_type": 2
+            "device_type": "flat screen"
         },
         {
             "id": 31,
             "employee_id": 5,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 32,
             "employee_id": 5,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
-
         {
             "id": 33,
             "employee_id": 6,
             "device_name": "Dell 15",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 34,
             "employee_id": 6,
             "device_name": "Samsung OLED 32",
-            "device_type": 2
+            "device_type": "flat screen"
         },
         {
             "id": 35,
             "employee_id": 6,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 36,
             "employee_id": 6,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
-
         {
             "id": 37,
             "employee_id": 7,
             "device_name": "Dell 14",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 38,
             "employee_id": 7,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 39,
             "employee_id": 7,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
-
-
-
         {
             "id": 40,
             "employee_id": 8,
             "device_name": "Dell 14",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 41,
             "employee_id": 8,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 42,
             "employee_id": 8,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
         {
             "id": 43,
             "employee_id": 9,
             "device_name": "Dell 14",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 44,
             "employee_id": 9,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 45,
             "employee_id": 9,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
         {
             "id": 46,
             "employee_id": 10,
             "device_name": "Dell 14",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 47,
             "employee_id": 11,
             "device_name": "Dell 14",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 48,
             "employee_id": 11,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 49,
             "employee_id": 11,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
         {
             "id": 50,
             "employee_id": 12,
             "device_name": "Dell 14",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 51,
             "employee_id": 12,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 52,
             "employee_id": 12,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
         {
             "id": 53,
             "employee_id": 13,
             "device_name": "Dell 14",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 54,
             "employee_id": 13,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 55,
             "employee_id": 13,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
         {
             "id": 56,
             "employee_id": 14,
             "device_name": "Dell 14",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 57,
             "employee_id": 14,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 58,
             "employee_id": 14,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
         {
             "id": 59,
             "employee_id": 15,
             "device_name": "Dell 14",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 60,
             "employee_id": 15,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 61,
             "employee_id": 15,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
         {
             "id": 62,
             "employee_id": 16,
             "device_name": "Dell 14",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 63,
             "employee_id": 16,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 64,
             "employee_id": 16,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
         {
             "id": 65,
             "employee_id": 17,
             "device_name": "Dell 14",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 66,
             "employee_id": 17,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 67,
             "employee_id": 17,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         },
         {
             "id": 68,
             "employee_id": 18,
             "device_name": "Dell 14",
-            "device_type": 1
+            "device_type": "laptop"
         },
         {
             "id": 69,
             "employee_id": 18,
             "device_name": "Dell Mouse USB-C",
-            "device_type": 3
+            "device_type": "mouse"
         },
         {
             "id": 70,
             "employee_id": 18,
             "device_name": "Dell Keyboard USB-C",
-            "device_type": 4
+            "device_type": "keyboard"
         }
     ]
 }

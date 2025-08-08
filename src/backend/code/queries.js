@@ -1,37 +1,12 @@
-'use strict';
+"use strict";
 
-const path = require('path');
-const sqlite = require('better-sqlite3');
-const fs = require('node:fs');
-// const database = new sqlite(path.resolve('./static/database.db'), { verbose: console.info });
-const database = new sqlite(path.resolve('./static/database.db'), { readonly: false });
+const path = require("path");
+const sqlite = require("better-sqlite3");
+const fs = require("node:fs");
+const database = new sqlite(path.resolve("./static/database.db"), { readonly: false });
 
 const config = {
     item_per_page: process.env.ITEM_PER_PAGE || 10,
-};
-
-const roles = {
-    1: "admin",
-    2: "chief executor officer",
-    3: "chief technical officer",
-    4: "chief content officer",
-    11: "product manager",
-    12: "lead developer",
-    13: "devops",
-    14: "developer",
-    15: "tester",
-    16: "trainee",
-    21: "it support",
-    100: "TBD",
-};
-const device_types = {
-    1: "Laptop",
-    2: "Flat Screen",
-    3: "Mouse",
-    4: "Keyboard",
-    5: "Support bag",
-    6: "Smartphone",
-    7: "SIM Card",
 };
 
 function query(sql, params) {
@@ -39,9 +14,9 @@ function query(sql, params) {
 }
 
 function init() {
-    database.exec(fs.readFileSync('./setenv/schema.sql', 'utf8'));
+    database.exec(fs.readFileSync("./setenv/schema.sql", "utf8"));
 
-    fs.readFile('./setenv/data.json', function (error, content) {
+    fs.readFile("./setenv/data.json", function (error, content) {
         if (error)
             throw error;
 
@@ -49,9 +24,9 @@ function init() {
 
         var stmt = database.prepare(`INSERT 
             INTO 
-                employees(id, employee_name, employee_role, employee_photo) 
+                employees(id, employee_name, employee_role) 
             VALUES 
-                (@id, @employee_name, @employee_role, @employee_photo)
+                (@id, @employee_name, @employee_role)
             ON CONFLICT DO NOTHING;
         `);
 
@@ -81,6 +56,8 @@ function list_employees(params) {
             (SELECT COUNT(id) FROM employees) AS TOTAL_ITEMS
         FROM 
             employees 
+        ORDER BY 
+            id DESC
         LIMIT 
             ?, ?;
     `, [offset, config.item_per_page]);
@@ -121,6 +98,8 @@ function list_devices(params) {
         INNER JOIN 
             employees
                 ON employees.id = devices.employee_id
+        ORDER BY 
+            id DESC
         LIMIT 
             ?, ?;
     `, [offset, config.item_per_page]);
@@ -136,7 +115,8 @@ function upsert_employee(payload) {
 
 }
 
-function upsert_device(employee_id, payload) {
+function upsert_device(payload) {
+
 }
 
 function delete_employee(id) {
@@ -158,8 +138,6 @@ function delete_device(id) {
 }
 
 module.exports = {
-    roles,
-    device_types,
     init,
     list_employees,
     list_devices,

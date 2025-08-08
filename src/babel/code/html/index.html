@@ -16,17 +16,22 @@
 <body>
     <div id="app"></div>
 
-    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-    <script src="/public/css-js/react-18/react.development.js" crossorigin></script>
-    <script src="/public/css-js/react-18/react-dom.development.js" crossorigin></script>
-    <script src="/public/css-js/babel.min.js" crossorigin></script>
     <script src="/public/css-js/jquery-3.7.0.min.js"></script>
     <script src="/public/css-js/popper-2.11.6.min.js"></script>
     <script src="/public/css-js/bootstrap-5.3.1/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/react-bootstrap@2.10.10/dist/react-bootstrap.min.js" async></script>
-    <!-- Load our React component. -->
-    <script type="text/babel" src="/public/css-js/popup.js" async></script>
-    <script type="text/babel" src="/public/css-js/app.js" async></script>
+    <script src="/public/css-js/popup.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://ga.jspm.io/npm:es-module-shims@1.7.0/dist/es-module-shims.js"></script>
+    <script type="importmap">
+    { "imports": {
+        "react": "https://esm.sh/react?dev",
+        "react-dom/client": "https://esm.sh/react-dom/client?dev",
+        "react-dom/server": "https://esm.sh/react-dom/server?dev",
+        "react-router-dom": "https://esm.sh/react-router-dom?dev",
+        "react-bootstrap": "https://esm.sh/react-bootstrap?dev"
+    } }
+    </script>
+    <script type="text/babel" data-type="module" src="/public/Root2.js"></script>
 
 </body>
 

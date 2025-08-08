@@ -1,8 +1,7 @@
 CREATE TABLE IF NOT EXISTS employees (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     employee_name TEXT NOT NULL,
-    employee_role INTEGER NOT NULL DEFAULT 100,
-    employee_photo TEXT NULL DEFAULT "no-photo.jpg",
+    employee_role TEXT NOT NULL DEFAULT 100,
     employee_created_ts INTEGER DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
@@ -10,7 +9,7 @@ CREATE TABLE IF NOT EXISTS devices (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     employee_id INTEGER NOT NULL,
     device_name TEXT NOT NULL,
-    device_type INTEGER NOT NULL,
+    device_type TEXT NOT NULL,
     device_created_ts INTEGER DEFAULT CURRENT_TIMESTAMP NOT NULL,
     FOREIGN KEY(employee_id) REFERENCES employees(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
