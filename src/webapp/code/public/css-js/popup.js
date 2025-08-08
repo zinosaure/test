@@ -5,7 +5,7 @@ function Popup() {
 
             $(document).ready(function () {
                 $this.spin = $('<h1 class="text-center"><i class="fa-solid fa-spinner fa-spin"></i></h1>').css({
-                    paddingTop: 16,
+                    paddingTop: 10,
                 });
                 $this.content_child = $('<div class="card-body"></div>').append($this.spin);
                 $this.content = $('<div id="xxxxxx" class="card"></div>').css({

@@ -22,6 +22,14 @@ app.get("/", function (request, response) {
     return response.sendFile(path.join(__dirname, '/html/index.html'));
 });
 
+app.get("/devices", function (request, response) {
+    response.header('Cache-Control', 'private, no-cache, no-store, must-revalidate, max-age=0');
+    response.header('Expires', '-1');
+    response.header('Pragma', 'no-cache');
+    response.header('Content-Type', 'text/html');
+    return response.sendFile(path.join(__dirname, '/html/index.html'));
+});
+
 app.listen(PORT, function () {
     console.log(`Listening on port ${PORT}`);
 });

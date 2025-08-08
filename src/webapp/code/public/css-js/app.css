@@ -11,10 +11,6 @@ body {
     height: 20px;
 }
 
-.container {
-    width: 800px;
-}
-
 table tr th:nth-child(1),
 table tr th:nth-child(2),
 table tr th:nth-child(3) {

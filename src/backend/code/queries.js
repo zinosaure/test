@@ -90,8 +90,9 @@ function list_devices(params) {
         params = { page: 1 };
 
     const offset = (params.page - 1) * config.item_per_page;
-    const data = query(`SELECT 
+    const devices = query(`SELECT 
             *,
+            coalesce(devices.id, devices.id) AS id,
             (SELECT COUNT(id) FROM devices) AS TOTAL_ITEMS
         FROM 
             devices
@@ -105,18 +106,47 @@ function list_devices(params) {
     `, [offset, config.item_per_page]);
     const meta = {
         page: parseInt(params.page),
-        total_items: data.length > 0 ? data[0].TOTAL_ITEMS : 0,
+        total_items: devices.length > 0 ? devices[0].TOTAL_ITEMS : 0,
     };
 
-    return { data, meta };
+    return { devices, meta };
 }
 
 function upsert_employee(payload) {
+    if (!payload.id)
+        payload.id = null;
 
+    var stmt = database.prepare(`INSERT 
+        INTO 
+            employees(id, employee_name, employee_role) 
+        VALUES 
+            (@id, @employee_name, @employee_role)
+        ON CONFLICT DO 
+            UPDATE SET 
+                employee_name=excluded.employee_name, 
+                employee_role=excluded.employee_role;
+    `);
+
+    return stmt.run(payload);
 }
 
 function upsert_device(payload) {
+    if (!payload.id)
+        payload.id = null;
 
+    var stmt = database.prepare(`INSERT 
+        INTO 
+            devices(id, employee_id, device_name, device_type) 
+        VALUES 
+            (@id, @employee_id, @device_name, @device_type)
+        ON CONFLICT DO
+            UPDATE SET 
+                employee_id=excluded.employee_id, 
+                device_name=excluded.device_name,
+                device_type=excluded.device_type;
+    `);
+
+    return stmt.run(payload);
 }
 
 function delete_employee(id) {

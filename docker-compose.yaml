@@ -17,13 +17,13 @@ services:
             - /app/node_modules
             - ./src/backend/code:/app/code
 
-    babel:
+    webapp:
         depends_on:
             - "backend"
-        image: fleet/babel
-        container_name: fleet-babel
+        image: fleet/webapp
+        container_name: fleet-webapp
         build:
-            context: ./src/babel
+            context: ./src/webapp
         ports:
             - "8081:80"
         tty: true
@@ -33,4 +33,4 @@ services:
             - PASSWORD=???
         volumes:
             - /app/node_modules
-            - ./src/babel/code:/app/code
+            - ./src/webapp/code:/app/code
